@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const</title>
+</head>
+<body>
+<script>
+  /*
+   var 
+   --> can be reassigned
+   --> function scoped (they are only available inside the function they are created)
+   --> global window (if not created inside a function, they are global variables)
+  */
+  var width = 100;
+  console.log(width);
+  width = 200;
+  console.log(width);
+
+  function setWidth() {
+    var width = 300;
+    console.log(width);
+  }
+  setWidth();
+  console.log(width); // width is not defined, because it has been created inside a function
+
+  var age = 100;
+  if (age > 12) {
+    var dogYears = age * 7;
+    console.log(`You are ${dogYears} dog years old!`);
+  }
+  // we have access to dogYears, because it was not defined inside a function
+
+
+
+  /*
+    let and const
+  --> block scoped (anytime you see a variable inside {}, it's blocked scoped)
+  */
+  let height = 200;
+  const key = 'abc123';
+
+  var age2 = 100;
+  if (age2 > 12) {
+    let dogYears2 = age * 7;
+    console.log(`You are ${dogYears2} dog years old!`);
+  }
+  // dogYears2 is not defined (we don't have access to it outside the blocked scoped)
+
+  var age3 = 100;
+  if (age3 > 12) {
+    let dogYears3 = age * 7;
+    console.log(`You are ${dogYears3} dog years old!`);
+  }
+  // dogYears3 is not defined (just like 'let')
+
+</script>
+</body>
+</html>
