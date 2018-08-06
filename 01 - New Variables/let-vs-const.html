@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const</title>
+</head>
+<body>
+<script>
+  // let and const can be declared only once
+  const key = 'abc123';
+  let points = 50;
+  let winner = false; // scoped to the window
+
+  // once you declare a let variable you can update it
+  points = 60;
+
+  if (points > 40) {
+    let winner = true;   // blocked scoped
+  } // no errors --> it's allowed
+  
+  console.log(winner); // false
+
+
+  // once you declare a const variable you cannot update it
+  key = 'abc';
+
+  const person = {
+    name: 'Enea',
+    age: 26
+  }
+
+  person.name = 'eneax';
+  person.age = 27;
+  console.log(person); // {name: "eneax", age: 27}
+
+  const person = true; // Uncaught SyntaxError: Identifier 'person' has already been declared
+
+</script>
+</body>
+</html>
