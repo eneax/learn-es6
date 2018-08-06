@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const real world</title>
+</head>
+<body>
+<script>
+  // Temporal Dead Zone
+  // You cannot access a variable before it is defined
+
+  console.log(rockets);
+  var rockets = 'Deep Space 🚀🚀🚀';
+  // undefined 
+  // You can only access the fact that the variable has been created before
+  // But you cannot access the value of the variable
+
+  console.log(monkeys);
+  let monkeys = 'Deep Space 🐒🐒🐒';
+  // Uncaught ReferenceError: monkeys is not defined (same for 'const')
+
+
+  /* 
+    BONUS
+    - use 'const' by default
+    - use 'let' only if you need to update the value of the variable
+  */ 
+
+</script>
+</body>
+</html>
