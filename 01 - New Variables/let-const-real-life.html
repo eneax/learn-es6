@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const real world</title>
+</head>
+<body>
+<script>
+  // IIFE --> variable is no longer leaking into the global scope
+  (function() {
+    var name = 'enea';
+    console.log(name);
+  })();
+
+  {
+    const age = 26;
+    console.log(age);
+    // blocked scope --> age doesn't exist outside the {}
+  }
+
+  for(var i = 0; i < 10; i++) {
+    console.log(i);
+    setTimeout(function() {
+      console.log('The number is ' + i);  // i = 10
+    }, 1000);
+  }
+  console.log(i); // 10
+  // 'i' leaks outside and it's final value is now 10
+
+
+  for (let x = 0; x < 10; x++) {
+    console.log('x' + ' is ' + x);
+  }
+  console.log(x); // Uncaught ReferenceError: x is not defined
+
+  // const cannot be used with a for loop
+  
+</script>
+</body>
+</html>
