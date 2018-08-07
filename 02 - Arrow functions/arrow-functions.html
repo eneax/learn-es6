@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Arrow functions → → </title>
+</head>
+<body>
+<script>
+  const names = ['wes', 'kait', 'lux'];
+
+  // before ES6
+  const fullNames = names.map(function(name) {
+    return `${name} bos`;
+  });
+  console.log('first', fullNames);
+
+  // remove function, use arrow
+  const fullNames2 = names.map((name) => {
+    return `${name} bos`;
+  });
+  console.log('second', fullNames2);
+
+  // no need to (name), if there is only one argument
+  const fullNames3 = names.map(name => {
+    return `${name} bos`;
+  });
+  console.log('third', fullNames3);
+
+  // implicit return
+  const fullNames4 = names.map((name) => `${name} bos`);
+  console.log('fourth', fullNames4);
+
+  // anonymous arrow function
+  const fullNames5 = names.map(() => `cool bos`);
+  console.log('fourth', fullNames5);
+
+  // named function
+  function sayMyName(name) {
+    console.log(`Hello, ${name}`);
+  }
+  sayMyName('Enea');
+
+  // arrow functions don't have a name, 
+  // but you can put them in a variable (which has a name)
+  const sayMyName2 = (name) => {console.log(`Hello, ${name}`)};
+  sayMyName2('Enea2');
+
+</script>
+</body>
+</html>
