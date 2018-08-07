@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Default Arguments</title>
+</head>
+<body>
+<script>
+
+  // if tax is not defined, then the default is 0.13
+  function calculateBill(total, tax = 0.13, tip = 0.15) {
+    return total + (total * tax) + (total * tip);
+  }
+
+  const totalBill = calculateBill(100);
+  const totalBill2 = calculateBill(120, 0.13, 0.25);
+  const totalBill3 = calculateBill(140, undefined, 0.25); // use undefined, to leave the spot empty
+
+  console.log(totalBill);
+  console.log(totalBill2);
+  console.log(totalBill3);
+
+</script>
+</body>
+</html>
