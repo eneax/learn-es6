@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Arrow functions examples</title>
+</head>
+<body>
+<script>
+
+const race = '100m Dash';
+const winners = ['Hunter Gath', 'Singa Song', 'Imda Bos'];
+
+// implicit return with object literal
+const win = winners.map((winner, i) => (
+  {
+    name: winner,
+    race, // same as --> race: race
+    place: i + 1
+  }
+));
+console.table(win);
+
+
+
+const ages = [23, 43, 65, 34, 95, 3, 70, 85];
+
+// filter array for people older than 60
+const filterAges = ages.filter((age) => {
+  return age >= 60;
+});
+console.log('age1',filterAges);
+
+const filterAges2 = ages.filter((age) => age >= 60);
+console.log('age2', filterAges2);
+
+</script>
+</body>
+</html>
