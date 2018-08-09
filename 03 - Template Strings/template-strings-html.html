@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Template Strings!</title>
+</head>
+<body>
+<script>
+  const person = {
+    name: 'Wes',
+    job: 'Web Developer',
+    city: 'Hamilton',
+    bio: 'Wes is a really cool guy that loves to teach web development!',
+  };
+
+  // 1) Template Strings can be used for multiline strings
+  const markup = `
+    <div class='person'>
+      <h2>
+        ${person.name}
+        <span class='job'>${person.job}</span>
+      </h2>
+      <p class='location'>${person.city}</p>
+      <p class='bio'>${person.bio}</p>
+    </div>
+  `;
+
+  document.body.innerHTML = markup;
+
+  
+
+  // 2) Template Strings can be nested inside each other
+  const dogs = [
+    { name: 'Snickers', age: 2 },
+    { name: 'Hugo', age: 8 },
+    { name: 'Sunny', age: 1 }
+  ];
+
+  const markup2 = `
+    <ul class='dogs'>
+      ${
+        dogs.map((dog) => `
+          <li>
+            ${dog.name} is ${dog.age * 7} dog years old
+          </li>
+        `).join('')
+      }
+    </ul>
+  `;
+  // '.map' will return an array of 'li', so we use '.join' to remove the commas
+
+  document.body.innerHTML = markup2;
+
+
+
+  // 3) You can use 'if statements' inside of template strings
+  // if there is no 'featuring', then nothing will be displayed
+  const song = {
+    name: 'Dying to Live',
+    artist: 'Tupac',
+    featuring: 'Biggie Smalls'
+  };
+
+  const markup3 = `
+    <div class='song'>
+      <p>
+        ${song.name} - ${song.artist}
+        ${song.featuring ? `(Featuring ${song.featuring})` : ''}
+      </p>
+    </div>
+  `;
+
+  document.body.innerHTML = markup3;
+
+
+
+  // 4) Render function --> create a separate function to handle extra complexity
+  const beer = {
+    name: 'Belgian Wit',
+    brewery: 'Steam Whistle Brewery',
+    keywords: ['pale', 'cloudy', 'spiced', 'crisp']
+  }
+
+  function renderKeywords(keywords) {
+    return `
+      <ul>
+        ${keywords.map((keyword) => `<li>${keyword}</li>`).join('')}
+      </ul>
+    `;
+  }
+
+  const markup4 = `
+    <div class='beer'>
+      <h2>${beer.name}</h2>
+      <p class='brewery'>${beer.brewery}</p>
+      ${renderKeywords(beer.keywords)}
+    </div>
+  `;
+
+  document.body.innerHTML = markup4;
+
+</script>
+</body>
+</html>
