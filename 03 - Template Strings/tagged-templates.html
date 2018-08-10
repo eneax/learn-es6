@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tagged Templates</title>
+  <style>
+    .h1 {
+      background-color: gold;
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+<script>
+
+  // With 'highlight' we can modify the sentence before it runs
+  /*
+    strings --> it's the array of words until ${}; 
+            --> it's always one value more than values
+
+    When we don't know how many values will be passed, 
+    we can use '...values' to create an array of values
+  */
+
+  function highlight(strings, ...values) {
+    let str = '';
+    strings.forEach((string, i) => {
+      // take one value from 'strings' and one from 'values'
+      // if there is nothing else in values, return nothing
+      // str += string + (values[i] || '');
+
+      str += `${string} <span contenteditable class='h1'>${values[i] || ''}</span>`
+    });
+    return str;
+  }
+
+  const name = 'Snickers';
+  const age = 100;
+
+  const sentence = highlight`
+    My dog's name is ${name} and he is ${age} years old
+  `;
+  
+  document.body.innerHTML = sentence;
+  console.log(sentence);
+
+
+</script>
+</body>
+</html>
