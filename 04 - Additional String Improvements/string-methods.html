@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New String Methods</title>
+</head>
+<body>
+
+<script>
+const course = 'RFB2';
+const flightNumber = '20-AC2018-jz';
+const accountNumber = '825242631RT0001';
+
+const make = 'BMW';
+const model = 'x5';
+const colour = 'Royal Blue';
+
+// .startsWith()
+course.startsWith('RF');  // true
+course.startsWith('rf');  // false (it's case sensitive)
+
+flightNumber.startsWith('AC'); // false
+flightNumber.startsWith('AC', 3); // true (it checks after the 3rd character)
+
+// .endsWith()
+flightNumber.endsWith('jz');  // true
+accountNumber.endsWith('RT'); // false
+accountNumber.endsWith('RT', 11); // true (consider only the first 11 numbers and ignore the rest)
+
+// .includes()
+flightNumber.includes('AC');  // true
+flightNumber.includes('ac');  // false
+
+// .repeat() --> takes a string and repeats it
+function leftPad(str, length = 20) {
+  return `➡ ${' '.repeat(length - str.length)}${str}`;
+}
+
+console.log(leftPad(make));
+console.log(leftPad(model));
+console.log(leftPad(colour));
+
+/*
+align left for all the variables
+
+➡                  BMW  (17 spaces and 3 characters)
+➡                   x5  (18 spaces and 2 characters)
+➡           Royal Blue  (10 spaces and 10 characters)
+
+*/
+
+
+</script>
+
+</body>
+</html>
