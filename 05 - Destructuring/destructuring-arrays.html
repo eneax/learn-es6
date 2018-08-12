@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Destructuring Arrays</title>
+</head>
+<body>
+<script>
+
+  const details = ['Wes Bos', 123, 'wesbos.com'];
+  
+  // Without Destructuring
+  const name = details[0];
+  const id = details[1];
+  const website = details[2];
+
+  // With Destructuring
+  // const [ name, id, website ] = details;
+
+
+
+  const data = 'Basketball,Sports,90210,23,wes,bos,cool';
+  
+  // Take a comma-separated file, split it and destructure
+  const [ itemName, category, sku, inventory ] = data.split(',');
+  // it works even if we didn't consider the other values (wes,bos,cool)
+
+
+  // Rest Operator --> ...players (will give you all the rest of the team)
+  const team = ['Wes', 'Harry', 'Sarah', 'Keegan', 'Riker'];
+  const [ captain, assistant, ...players ] = team;
+  
+  console.log(captain);     // Wes
+  console.log(assistant);   // Harry
+  console.log(players);     // ['Sarah', 'Keegan', 'Riker']
+
+</script>
+</body>
+</html>
