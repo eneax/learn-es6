@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Destructuring in Action!</title>
+</head>
+<body>
+<script>
+
+  function convertCurrency(amount) {
+    const converted = {
+      USD: amount * 0.76,
+      GPB: amount * 0.53,
+      AUD: amount * 1.01,
+      MEX: amount * 13.30
+    };
+    return converted;
+  }
+
+  const hundo = convertCurrency(100);
+  console.log(hundo);
+  // Convert amount into USD
+  console.log(hundo.USD);
+  // Convert amount into GPB
+  console.log(hundo.GPB);
+
+  // With destructuring
+  const { USD, GPB, AUD, MEX } = convertCurrency(100);
+  console.log(USD, GPB, AUD, MEX);
+
+  // The order is not important
+  const { MEX, AUD, GPB, USD } = convertCurrency(100);
+  
+  // If you need only two currencies, you can destructure only two
+  const { MEX, USD } = convertCurrency(100);
+
+
+
+  function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
+    return total + (tip * total) + (tax * total);
+  }
+
+  /*
+    { total = 100, tip = 0.15, tax = 0.13 }
+    It will destructure the obj into 3 variables (total, tip, tax)
+  */
+
+  const bill = tipCalc({ total: 200, tip: 0.20, tax: 0.13 });
+  console.log(bill);
+
+  // Since tax is 0.13 by default, we can omit it
+  const bill = tipCalc({ total: 200, tip: 0.20 });
+
+  // Order doesn't matter
+  const bill = tipCalc({ tip: 0.20, total: 200 });
+
+  // If you want to pass only the defaults --> { total = 100, tip = 0.15, tax = 0.13 } = {}
+  function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
+    return total + (tip * total) + (tax * total);
+  }
+
+  const bill = tipCalc();
+
+
+</script>
+</body>
+</html>
