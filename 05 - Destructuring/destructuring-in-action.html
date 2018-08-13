@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Destructuring in Action!</title>
+</head>
+<body>
+<script>
+
+  let inRing = 'Hulk Hogan';
+  let onSide = 'The Rock';
+
+  console.log('Before ➡', inRing, onSide);
+  // Switch inRing with onSide
+  [inRing, onSide] = [onSide, inRing];
+  console.log('After ➡', onSide, inRing);
+
+</script>
+</body>
+</html>
