@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iterables & Looping</title>
+</head>
+<body>
+
+<script>
+  const apple = {
+    color: 'Red',
+    size: 'Medium',
+    weight: 50,
+    sugar: 10
+  };
+
+  // You cannot iterate with 'for... of...' loop on objects, but with this trick you can!
+  for (const prop of Object.keys(apple)) {
+    const value = apple[prop];
+    console.log('for...of... ➡', prop, value);
+  }
+
+  // OR just use 'for... in...'
+  for (const prop in apple) {
+    const value = apple[prop];
+    console.log('for...in... ➡', prop, value);
+  }
+  /*
+    color Red
+    size Medium
+    weight 50
+    sugar 10
+  */ 
+
+</script>
+</body>
+</html>
