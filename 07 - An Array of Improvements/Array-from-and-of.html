@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array .from() and .of()</title>
+</head>
+  <div class="people">
+    <p>Wes</p>
+    <p>Kait</p>
+    <p>Snickers</p>
+  </div>
+<body>
+<script>
+
+  // .from() and .to() are on the Array itself (not on the Prototype)
+  // Array.from() takes something that is array-ish and turns it into a real array
+  const people = document.querySelectorAll('.people p');
+  const peopleArr = Array.from(people);
+  const names = peopleArr.map((name) => console.log('peopleArr ➡', name.textContent));
+
+
+
+  // Array.from() can take a second argument as a .map() function
+  peopleArr2 = Array.from(people, (person) => {
+    console.log('peopleArr2 ➡', person.textContent);
+  });
+
+
+
+  // Convert 'arguments' into as array
+  // 'arguments' is an array-ish of the arguments that we passed to the fn
+  function sumAll() {
+    console.log(arguments);
+    const nums = Array.from(arguments);
+    return nums.reduce((acc, num) => acc + num, 0);
+  }
+  sumAll(23, 234, 2345, 4231, 324, 24567);
+
+
+
+  // Array.of() --> creates an array with the arguments that you passed
+  const ages = Array.of(12, 4, 23, 62, 34);
+  console.log(ages);
+
+</script>
+</body>
+</html>
