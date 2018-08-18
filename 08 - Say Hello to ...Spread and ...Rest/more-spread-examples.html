@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spread Examples</title>
+</head>
+<body>
+  <div class="people">
+    <p>Wes</p>
+    <p>Kait</p>
+    <p>Randy</p>
+  </div>
+<script>
+
+  const people = Array.from(document.querySelectorAll('.people p'));
+  // const people = [...document.querySelectorAll('.people p')];
+  const names = people.map((person) => person.textContent);
+
+  const deepDish = {
+    pizzaName: 'Deep Dish',
+    size: 'Medium',
+    ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
+  };
+
+  // Create new array from an object
+  const shoppingList = ['Milk', 'Flour', ...deepDish.ingredients];
+  console.log(shoppingList);
+
+
+
+  // How to delete comment
+  const comments = [
+    { id: 209384, text: 'I love your dog!' },
+    { id: 523423, text: 'Cuuute! 🐐' },
+    { id: 632429, text: 'You are so dumb' },
+    { id: 192834, text: 'Nice work on this wes!' },
+  ];
+  const id = 632429;
+
+  // First you need to know the index of the comment you want to delete 
+  const commentIndex = comments.findIndex((comment) => comment.id === id);
+  console.log(commentIndex);
+
+  // Then you create a 'newComments' array
+  // [...comments.slice(0, commentIndex)] --> from 0 until the comment you want to delete
+  // skip comment you want to delete
+  // [...comments.slice(commentIndex + 1)] --> everything after the comment you want to delete
+  const newComments = [...comments.slice(0, commentIndex), ...comments.slice(commentIndex + 1)];
+  console.log(newComments);
+
+</script>
+</body>
+</html>
