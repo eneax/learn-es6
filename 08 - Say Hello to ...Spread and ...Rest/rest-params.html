@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The ...Rest Param</title>
+</head>
+<body>
+<script>
+
+  /*
+    - Spread takes one thing (i.e. array) and unpacks it into multiple items
+    - Rest is the opposite of Spread (takes multiple things and packs into one)
+  */
+
+  // You can use Rest in a function
+  function convertCurrency(rate, ...amounts) {
+    return amounts.map((amount) => amount * rate);
+  }
+  const amounts = convertCurrency(1.54, 10, 23, 52, 1, 56);
+  console.log(amounts);
+  /*
+    we pass rate and everything else
+    convertCurrency(1.54, 10, 23, 52, 1, 56);
+    convertCurrency(1.54, 10);
+  */ 
+
+
+
+  // You can use Rest for destructuring
+  const runner = ['Wes Bos', 123, 5.5, 5, 3, 6, 35];
+  const [name, id, ...runs] = runner;
+
+  const team = ['Wes', 'Kait', 'Lux', 'Sheena', 'Kelly'];
+  const [captain, assistant, ...players] = team;
+  console.log(captain, assistant, players);
+
+</script>
+</body>
+</html>
