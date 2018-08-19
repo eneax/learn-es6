@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Object Literal Upgrades</title>
+</head>
+<body>
+<script>
+
+  const first = 'snickers';
+  const last = 'bos';
+  const age = 2;
+  const breed = 'King Charles Cav';
+
+  const dog = {
+    first: first,
+    last: last,
+    age: age,
+    breed: breed
+  };
+  // if the property name and the value, you're setting it equal to, have the same name 
+  const dog2 = {
+    firstName: first,
+    last,
+    age,
+    breed,
+    pals: ['Hugo', 'Sunny']
+  };
+  console.log(dog2);
+
+
+
+  // Method definition inside an object --> you can omit the 'function' keyword
+  const model = {
+    create: function(selector) {
+
+    },
+    open(content) {
+
+    },
+    close(goodbye) {
+
+    },
+  };
+
+
+
+  // Computed property names
+  const key = 'pocketColor';
+  const value = '#ffc600';
+
+  const tShirt = {
+    [key]: value
+  }
+  console.log(tShirt);
+
+  // Gives you the opposite color
+  function invertColor(color) {
+      return '#' + ("000000" + (0xFFFFFF ^ parseInt(color.substring(1),16)).toString(16)).slice(-6);
+  }
+
+  const tShirt2 = {
+    [key]: value,
+    [`${key}Opposite`]: invertColor(value)
+  }
+  console.log(tShirt2);
+
+
+
+  // Make an object combining each key with the respective value
+  const keys = ['size', 'color', 'weight'];
+  const values = ['medium', 'red', 100];
+
+  const shirt = {
+    [keys.shift()]: values.shift(),
+    [keys.shift()]: values.shift(),
+    [keys.shift()]: values.shift(),
+  }
+  console.log(shirt); // {size: "medium", color: "red", weight: 100}
+
+</script>
+</body>
+</html>
