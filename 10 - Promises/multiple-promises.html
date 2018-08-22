@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chaining Promises</title>
+</head>
+<body>
+<script>
+
+  const weather = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ temp: 29, conditions: 'Sunny with Clouds'});
+    }, 2000);
+  });
+
+  const tweets = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(['I like cake', 'BBQ is good too!']);
+    }, 500);
+  });
+
+  /*
+    even if the tweets, will resolve after 500ms,
+    'Promise.all()' waits for all the other promises
+  */
+  Promise
+    .all([weather, tweets])
+    .then((responses) => {
+      const [weatherInfo, tweetsInfo] = responses;  // so we can have two separate variables
+      console.log(weatherInfo, tweetsInfo);
+    });
+
+
+
+  const postsPromise = fetch('https://wesbos.com/wp-json/wp/v2/posts');
+  const streetCarsPromise = fetch('http://data.ratp.fr/api/datasets/1.0/search/?q=paris');
+
+  Promise
+    .all([postsPromise, streetCarsPromise])
+    // it will return 2 arrays
+    .then((responses2) => {
+      // we loops over and parse each array, so we can read the results
+      return Promise.all(responses2.map((res) => res.json()))
+    })
+    .then((res) => {
+      console.log(res);
+    });
+
+</script>
+</body>
+</html>
