@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Symbols</title>
+</head>
+<body>
+<script>
+  /*
+    JavaScript Primitives
+    1) Number
+    2) String
+    3) Object
+    4) Boolean
+    5) Null
+    6) Undefined
+    7) Symbols
+
+    - Symbols are unique identifiers that help us avoid naming collisions
+    - Each Symbol contains a unique descriptor
+    - You cannot loop over a Symbol
+    - You can use Symbols to store private data
+  */ 
+
+  const wes = Symbol('Wes');
+  console.log(wes); // Symbol('Wes')
+
+  const person = Symbol('Wes');
+  console.log(person);  // Symbol('Wes')
+
+  console.log(wes === person);  // false
+  console.log(wes == person);   // false
+
+
+
+  const classRoom = {
+    [Symbol('Mark')]: { grade: 50, gender: 'male'},
+    [Symbol('Olivia')]: { grade: 80, gender: 'female'},
+    [Symbol('Olivia')]: { grade: 80, gender: 'female'},
+  };
+  console.log(classRoom);
+
+
+
+  const syms = Object.getOwnPropertySymbols(classRoom);
+  console.log(syms);  // [Symbol(Mark), Symbol(Olivia), Symbol(Olivia)]
+  const data = syms.map((sym) => classRoom[sym]);
+  console.log(data);  // [{grade: 50, gender: "male"}, {grade: 80, gender: "female"}, {grade: 80, gender: "female"}]
+
+</script>
+</body>
+</html>
