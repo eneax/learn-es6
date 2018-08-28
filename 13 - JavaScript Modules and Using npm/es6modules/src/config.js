@@ -11,3 +11,8 @@ const age = 100;
 const dog = 'snickers';
 
 export { age as old, dog };
+
+
+/*
+Every module can have only one 'default export' 
+*/ 
