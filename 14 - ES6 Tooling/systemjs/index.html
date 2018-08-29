@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>System JS</title>
+</head>
+<body>
+  <script src="https://jspm.io/system@0.19.js"></script>
+  <script>
+    /*
+      - With System JS, you don't need to install anything like npm
+      - It runs in the browser
+      - You need to server to run this test
+    */
+
+    // Config System
+    System.config({ transpiler: 'babel' });
+    // Define entry point
+    System.import('./main.js');
+  </script>
+</body>
+</html>
