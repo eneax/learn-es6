@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inheritance Review</title>
+</head>
+<body>
+<script>
+  // 'Dog' is with capital 'D', because it's the constructor
+  function Dog(name, breed) {
+    this.name = name;
+    this.breed = breed;
+  }
+  Dog.prototype.bark = function() {
+    console.log(`Bark Bark! My name is ${this.name}`);
+  }
+
+  // Create instance
+  const snickers = new Dog('Snickers', 'King Charles');
+  const sunny = new Dog('Sunny', 'Golden Doodle');
+
+  Dog.prototype.bark = function() {
+    console.log(`Bark Bark! My name is ${this.name} and I'm a ${this.breed}!`);
+  }
+
+  Dog.prototype.cuddle = function() {
+    console.log('I love you owner!');
+  }
+
+  snickers.bark();      // Bark Bark! My name is Snickers and I'm a King Charles!
+  sunny.bark();         // Bark Bark! My name is Sunny and I'm a Golden Doodle!
+  sunny.cuddle();       // I love you owner!
+  snickers.cuddle();    // I love you owner!
+
+</script>
+</body>
+</html>
