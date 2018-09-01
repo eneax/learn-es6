@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inheritance Review</title>
+</head>
+<body>
+<script>
+  // Class Expression ---> const Dog = class {}
+
+  // Class Declaration
+  class Dog {
+    // constructor is always required when declaring a class
+    constructor(name, breed) {
+      this.name = name;
+      this.breed = breed;
+    }
+    bark() {
+      console.log(`Bark Bark! My name is ${this.name}`);
+    }
+    cuddle() {
+      console.log(`I love you owner!`);
+    }
+    // static method
+    static info() {
+      console.log('A dog is better than a cat by 10 times');
+    }
+    // getter --> it's a property (not a method)
+    get description() {
+      return `${this.name} is a ${this.breed} type of dog`
+    }
+    // setter 
+    set nickname(value) {
+      // cannot use nickname again, so we use nick
+      this.nick = value.trim();
+    }
+    get nickname() {
+      return this.nick.toUppercase();
+    }
+  }
+
+  const snickers = new Dog('Snickers', 'King Charles');
+  const sunny = new Dog('Sunny', 'Golden Doodle');
+
+  sunny.info();
+  /*
+    - Uncaught TypeError: sunny is not a function 
+    - Doesn't work because sunny is an instance of dog
+    - You can only call it on Dog directly
+  */
+
+  snickers.description();
+
+  snickers.nickname = '        snicky       ';
+
+  snicker.nickname; // "snicky"
+
+</script>
+</body>
+</html>
