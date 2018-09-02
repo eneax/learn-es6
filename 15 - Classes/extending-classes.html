@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Extending Classes</title>
+</head>
+<body>
+<script>
+  class Animal {
+    constructor(name) {
+      this.name = name;
+      this.thirst = 100;
+      this.belly = [];
+    }
+    drink() {
+      this.thirst -= 10;
+      return this.thirst;
+    }
+    eat(food) {
+      this.belly.push(food);
+      return this.belly;
+    }
+  }
+
+  // If you change any prop on Animal (drink, eat), it will change also on Dog
+
+  class Dog extends Animal {
+    // before creating a Dog, we need to extend Animal
+    constructor(name, breed) {
+      super(name);        // we reference name from the Animal class
+      this.breed = breed; // breed is the new prop that we create
+    }
+    bark() {
+      console.log('Bark Bark Bark!!!');
+    }
+  }
+
+  const rhino = new Animal('Rhiney');
+  const snickers = new Dog('Snickers', 'King Charles');
+
+</script>
+</body>
+</html>
