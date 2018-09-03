@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Extending</title>
+</head>
+<body>
+<script>
+
+  class MovieCollection extends Array {
+    // we capture all the items with the rest operator
+    constructor(name, ...items) {
+      // we spread all the items into the super function, which is the Array
+      super(...items);
+      this.name = name;
+    }
+    // we can add methods to the collection
+    add(movie) {
+      this.push(movie);
+    }
+    topRated(limit = 10) {
+      // 'this' is the MovieCollection 
+      return this.sort((a, b) => (a.stars > b.stars ? -1 : 1)).slice(0, limit);
+    }
+  }
+
+  // 'Fav Movies' is the name of the collection
+  const movies = new MovieCollection('Fav Movies',
+    { name: 'Bee Movie', stars: 10 },
+    { name: 'Star Wars Trek', stars: 1 },
+    { name: 'Virgin Suicides', stars: 7 },
+    { name: 'King of the Road', stars: 8 }
+  );
+
+  // add new movie to collection
+  movies.add({ name: 'Titanic', stars: 5 });
+
+  // display topRated movies
+  console.table(movies.topRated());
+  // display only the first two topRated movies
+  console.table(movies.topRated(2));
+
+</script>
+</body>
+</html>
