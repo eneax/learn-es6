@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Proxies!</title>
+</head>
+<body>
+<script>
+  // Proxies allow you to overwrite object's default behavior
+
+  const person = { name: 'Wes', age: 100 };
+
+  /*
+    A proxy takes two things:
+    1) target  --> which obj you'd like to proxy
+    2) handler --> where you specify all the operations that you wish to overwrite
+                -> everything inside a handler is a 'trap' 
+  */ 
+  const personProxy = new Proxy(person, {
+    get(target, name) {
+      // console.log('someone is asking for ', target, name);
+      return target[name].toUpperCase();
+    },
+    set(target, name, value) {
+      if (typeof value === 'string') {
+        target[name] = value.trim().toUpperCase() + ' ✂️';
+      }
+    }
+  });
+
+  personProxy.name = 'Wesley';
+  
+</script>
+</body>
+</html>
