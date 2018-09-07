@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Proxies!</title>
+</head>
+<body>
+<script>
+  const phoneHandler = {
+    set(target, name, value) {
+      target[name] = value.match(/[0-9]/g).join(''); // we want to match only numbers
+    },
+    get(target, name) {
+      return target[name].replace(/(\d{3})(\d{3})(\d{4})/, '($1)-$2-$3');
+    }
+  }
+
+  // we start with a blank object
+  const phoneNumbers = new Proxy({}, phoneHandler);
+
+  /*
+    phoneNumbers.work = '(123) 4567890';
+    phoneNumbers.work; --> '(123)-456-7890'
+  */ 
+</script>
+</body>
+</html>
