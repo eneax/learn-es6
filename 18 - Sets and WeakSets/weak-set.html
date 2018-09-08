@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brunch with Sets</title>
+</head>
+<body>
+<script>
+  /*
+    - A WeakSet is like a normal set, but with some limitations
+    - WeakSet can only contain objects
+    - You cannot loop over it
+    - There is no '.clear()' method, because it cleans itself up
+  */ 
+
+  let dog1 = { name: 'Snickers', age: 3 };
+  let dog2 = { name: 'sunny', age: 1 };
+
+  const weakSauce = new WeakSet([dog1, dog2]);
+  weakSauce.has(dog1); // true
+  weakSauce.has(dog2); // true
+
+  // If you delete dog1, it will be deleted automatically from the WeakSet
+  console.log(weakSauce);
+  dog1 = null;
+  console.log(weakSauce);
+
+</script>
+</body>
+</html>
