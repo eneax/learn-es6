@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Maps!</title>
+</head>
+<body>
+<script>
+  /*
+    Maps
+    - Are similar to Sets, but they have a key and a value
+  */ 
+  const dogs = new Map();
+
+  dogs.set('Snickers', 3);
+  dogs.set('Sunny', 2);
+  dogs.set('Hugo', 10);
+
+  dogs.has('Snickers'); // true
+  dogs.get('Snickers'); // 3
+  dogs.delete('Hugo');  // true and it deletes Hugo
+
+  dogs.forEach((value, key) => console.log(value, key));
+
+  // it will return an array of dog
+  for (const dog of dogs) {
+    console.log(dog);
+    // ["Snickers", 3]
+  }
+
+  for (const [key, value] of dogs) {
+    console.log(key, value);
+    // Snickers 3
+  }
+
+</script>
+</body>
+</html>
