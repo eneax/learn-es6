@@ -18,23 +18,59 @@
       });
     }
 
-    // To use Async Await, you need a Promise
-    async function go() {
-      console.log('start');
-      const res = await breathe(900);
+
+    /*
+      High-order function
+      - takes in a function as an argument 
+      - add some magic to the argument
+      - and returns a new function
+    */
+    function catchErrors(fn) {
+      return function(...args) {                // ...args --> rest (capture all arguments)
+        return fn(...args).catch(err => {       // ...args --> spread (spread all arguments)
+          console.error('Ohhhh Noooo');
+          console.error(err);
+        });
+      }
+    }
+
+    async function go(name, last) {
+      console.log(`Starting for ${name} ${last}`);
+      const res = await breathe(1000);
       console.log(res);
-      const res2 = await breathe(500);
+      const res2 = await breathe(300);
       console.log(res2);
       const res3 = await breathe(750);
       console.log(res3);
+      const res4 = await breathe(900);
+      console.log(res4);
       console.log('end');
     }
-    go(); 
+    
+    const wrappedFunction = catchErrors(go);
+    wrappedFunction('Wes', 'Bos');
+
+
+
     /*
-      start
-      end
-      
-    */
+    To use Async Await, you need a Promise
+      async function go() {
+        try {
+          console.log('start');
+          const res = await breathe(900);
+          console.log(res);
+          const res2 = await breathe(500);
+          console.log(res2);
+          const res3 = await breathe(750);
+          console.log(res3);
+          console.log('end');
+        } catch (error) {
+          console.error('Ohhh Nooooo');
+          console.error(error);
+        }
+      }
+      go();
+    */ 
     
     /*
       Async arrow function
